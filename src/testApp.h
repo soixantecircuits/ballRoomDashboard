@@ -24,11 +24,15 @@ class testApp : public ofBaseApp{
 		
     void loadFromXML();
     void bangStair(int stair);
+    void drawScore(int score);
 
     vector<sxStair*> _stairs;
+    vector<ofImage*> _digits;
     ofVideoPlayer _bgLoop;
     ofVideoPlayer _logoLoop;
     int _lastBangTime;
+    int _score;
+    float _easeScore;
 
     ofxOscReceiver _receiver;
 };

@@ -1,11 +1,13 @@
 #include "testApp.h"
 #include "ofxXmlSettings.h"
+#include "ofxTweenzor.h"
 #define PORT 12045
 
 //--------------------------------------------------------------
 void testApp::setup(){
   loadFromXML();
   ofEnableAlphaBlending();
+  Tweenzor::init();
   //ofBackground(255, 0, 0);
   _receiver.setup(PORT);
 
@@ -20,10 +22,19 @@ void testApp::setup(){
   _logoLoop.loadMovie("animations/mots/logoballroom_anime.mov");
   _logoLoop.setLoopState(OF_LOOP_NORMAL);
   _logoLoop.play();
+
+  // load digits
+  _digits.resize(10);
+  for (unsigned int i = 0; i < 10; i++){
+    ofImage *image = new ofImage();
+    image->loadImage("graphics/numbers_PNG/" + ofToString(i) + ".png");
+    _digits[i] = image;
+  }
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+  Tweenzor::update( ofGetElapsedTimeMillis() );
   checkForOscMessages();
   _bgLoop.update();
   _logoLoop.update();
@@ -35,6 +46,8 @@ void testApp::update(){
   if (ofGetElapsedTimeMillis() - _lastBangTime > 10000
      /*&& !_logoLoop.isPlaying()*/){
     _logoLoop.play();
+    _score = 0;
+    _easeScore = 0;
   }
 }
 
@@ -47,6 +60,22 @@ void testApp::draw(){
   for (unsigned int i = 0; i < _stairs.size(); i++){
     _stairs[i]->draw(rect.x, rect.y, rect.width, rect.height);
   }
+  drawScore(_easeScore);
+}
+
+//--------------------------------------------------------------
+void testApp::drawScore(int score){
+  int length = 9;
+  //cout << "score: " ;
+  for (int i = 0; i < length; i++){
+    int digit = (int)(score / (int)pow(10,(length -1 - i))) % 10;
+    //cout << digit << endl;
+    int digitWidth = 90;
+    int digitHeight = 100;
+
+    _digits[digit]->draw(i*digitWidth, 600, digitWidth, digitHeight); 
+  }
+  //cout << endl;
 }
 
 //--------------------------------------------------------------
@@ -69,6 +98,8 @@ void testApp::bangStair(int stair){
     _lastBangTime = ofGetElapsedTimeMillis();
     _logoLoop.stop();
     _logoLoop.firstFrame();
+    _score = _score + _stairs[stair]->_score;
+    Tweenzor::add( &_easeScore, _easeScore, _score, 0.f, 2.0f, EASE_IN_QUINT);
 }
 
 //--------------------------------------------------------------
