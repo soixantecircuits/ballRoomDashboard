@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "sxStair.h"
 
 class testApp : public ofBaseApp{
 
@@ -19,4 +20,11 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+    void loadFromXML();
+    void bangStair(int stair);
+
+    vector<sxStair*> _stairs;
+    ofVideoPlayer _bgLoop;
+    ofVideoPlayer _logoLoop;
+    int _lastBangTime;
 };
