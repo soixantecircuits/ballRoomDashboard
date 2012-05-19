@@ -1,11 +1,15 @@
 #include "testApp.h"
 #include "ofxXmlSettings.h"
+#define PORT 12045
 
 //--------------------------------------------------------------
 void testApp::setup(){
   loadFromXML();
   ofEnableAlphaBlending();
   //ofBackground(255, 0, 0);
+  _receiver.setup(PORT);
+
+  // loops
   _bgLoop.loadMovie("animations/backgroundlogo_dashboard.mov");
   _bgLoop.setLoopState(OF_LOOP_NORMAL);
   _bgLoop.play();
@@ -20,13 +24,14 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+  checkForOscMessages();
   _bgLoop.update();
   _logoLoop.update();
   for (unsigned int i = 0; i < _stairs.size(); i++){
     _stairs[i]->update();
   }
 
-  //logo loop
+  // logo loop
   if (ofGetElapsedTimeMillis() - _lastBangTime > 10000
      /*&& !_logoLoop.isPlaying()*/){
     _logoLoop.play();
@@ -41,6 +46,19 @@ void testApp::draw(){
   _logoLoop.draw(rect);
   for (unsigned int i = 0; i < _stairs.size(); i++){
     _stairs[i]->draw(rect.x, rect.y, rect.width, rect.height);
+  }
+}
+
+//--------------------------------------------------------------
+void testApp::checkForOscMessages(){
+  while (_receiver.hasWaitingMessages()){
+    ofxOscMessage m;
+    _receiver.getNextMessage(&m);
+    if (m.getAddress() == "/ballroom/bounce/"){
+      int stair = m.getArgAsInt32(0);
+      cout << "A ball hit stair #" << stair << endl;
+      bangStair(stair);
+    }
   }
 }
 

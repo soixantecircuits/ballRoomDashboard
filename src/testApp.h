@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "sxStair.h"
+#include "ofxOsc.h"
 
 class testApp : public ofBaseApp{
 
@@ -19,6 +20,7 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    void checkForOscMessages();
 		
     void loadFromXML();
     void bangStair(int stair);
@@ -27,4 +29,6 @@ class testApp : public ofBaseApp{
     ofVideoPlayer _bgLoop;
     ofVideoPlayer _logoLoop;
     int _lastBangTime;
+
+    ofxOscReceiver _receiver;
 };
