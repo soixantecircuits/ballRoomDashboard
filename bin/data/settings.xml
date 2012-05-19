@@ -1,87 +1,87 @@
 <STAIRS>
   <STAIR>
-    <ID>0</ID>
+    <ID>12</ID>
     <VIDEO>animations/mots/awesome.mov</VIDEO>
-    <SCORE>10000</SCORE>
+    <SCORE>25000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>1</ID>
+    <ID>16</ID>
     <VIDEO>animations/mots/ballroomking.mov</VIDEO>
-    <SCORE>15000</SCORE>
-  </STAIR>
-  <STAIR>
-    <ID>2</ID>
-    <VIDEO>animations/mots/bounce.mov</VIDEO>
-    <SCORE>15000</SCORE>
-  </STAIR>
-  <STAIR>
-    <ID>3</ID>
-    <VIDEO>animations/mots/dothedance.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>25000</SCORE>
   </STAIR>
   <STAIR>
     <ID>4</ID>
+    <VIDEO>animations/mots/bounce.mov</VIDEO>
+    <SCORE>10000</SCORE>
+  </STAIR>
+  <STAIR>
+    <ID>8</ID>
+    <VIDEO>animations/mots/dothedance.mov</VIDEO>
+    <SCORE>20000</SCORE>
+  </STAIR>
+  <STAIR>
+    <ID>3</ID>
     <VIDEO>animations/mots/easy.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>10000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>5</ID>
+    <ID>15</ID>
     <VIDEO>animations/mots/epic.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>5000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>6</ID>
+    <ID>13</ID>
     <VIDEO>animations/mots/genius.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>5000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>7</ID>
+    <ID>9</ID>
     <VIDEO>animations/mots/hot.mov</VIDEO>
     <SCORE>15000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>8</ID>
+    <ID>2</ID>
     <VIDEO>animations/mots/mini.mov</VIDEO>
-    <SCORE>15000</SCORE>
-  </STAIR>
-  <STAIR>
-    <ID>9</ID>
-    <VIDEO>animations/mots/tough.mov</VIDEO>
-    <SCORE>15000</SCORE>
-  </STAIR>
-  <STAIR>
-    <ID>10</ID>
-    <VIDEO>animations/mots/omg.mov</VIDEO>
     <SCORE>15000</SCORE>
   </STAIR>
   <STAIR>
     <ID>11</ID>
     <VIDEO>animations/mots/tough.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>10000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>12</ID>
-    <VIDEO>animations/mots/turbo.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <ID>6</ID>
+    <VIDEO>animations/mots/omg.mov</VIDEO>
+    <SCORE>5000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>13</ID>
-    <VIDEO>animations/mots/weak.mov</VIDEO>
+    <ID>5</ID>
+    <VIDEO>animations/mots/niceone.mov</VIDEO>
     <SCORE>15000</SCORE>
   </STAIR>
   <STAIR>
     <ID>14</ID>
+    <VIDEO>animations/mots/turbo.mov</VIDEO>
+    <SCORE>10000</SCORE>
+  </STAIR>
+  <STAIR>
+    <ID>1</ID>
+    <VIDEO>animations/mots/weak.mov</VIDEO>
+    <SCORE>5000</SCORE>
+  </STAIR>
+  <STAIR>
+    <ID>0</ID>
     <VIDEO>animations/mots/wtf.mov</VIDEO>
     <SCORE>15000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>15</ID>
+    <ID>7</ID>
     <VIDEO>animations/mots/yay.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>5000</SCORE>
   </STAIR>
   <STAIR>
-    <ID>16</ID>
+    <ID>10</ID>
     <VIDEO>animations/mots/yourule.mov</VIDEO>
-    <SCORE>15000</SCORE>
+    <SCORE>5000</SCORE>
   </STAIR>
 </STAIRS>

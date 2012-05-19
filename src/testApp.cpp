@@ -54,7 +54,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
   ofRectangle rect;
-  rect.set(0, 0, 1980/2, 960/2);
+  rect.set(0, 0, 600, 450);
   _bgLoop.draw(rect);
   _logoLoop.draw(rect);
   for (unsigned int i = 0; i < _stairs.size(); i++){
@@ -65,15 +65,16 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::drawScore(int score){
-  int length = 9;
+  int length = 7;
   //cout << "score: " ;
   for (int i = 0; i < length; i++){
     int digit = (int)(score / (int)pow(10,(length -1 - i))) % 10;
     //cout << digit << endl;
-    int digitWidth = 90;
-    int digitHeight = 100;
+    float ratio = 0.9;
+    int digitWidth = 90*ratio;
+    int digitHeight = 100*ratio;
 
-    _digits[digit]->draw(i*digitWidth, 600, digitWidth, digitHeight); 
+    _digits[digit]->draw(i*digitWidth, 450- digitHeight, digitWidth, digitHeight); 
   }
   //cout << endl;
 }
