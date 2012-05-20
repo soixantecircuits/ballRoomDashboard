@@ -23,6 +23,9 @@ class testApp : public ofBaseApp{
     void checkForOscMessages();
 		
     void loadFromXML();
+    void tada();
+    void gameover();
+    void startPlaying();
     void bangStair(int stair);
     void drawScore(int score);
 

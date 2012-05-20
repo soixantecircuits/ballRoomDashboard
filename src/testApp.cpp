@@ -41,14 +41,6 @@ void testApp::update(){
   for (unsigned int i = 0; i < _stairs.size(); i++){
     _stairs[i]->update();
   }
-
-  // logo loop
-  if (ofGetElapsedTimeMillis() - _lastBangTime > 10000
-     /*&& !_logoLoop.isPlaying()*/){
-    _logoLoop.play();
-    _score = 0;
-    _easeScore = 0;
-  }
 }
 
 //--------------------------------------------------------------
@@ -80,6 +72,24 @@ void testApp::drawScore(int score){
 }
 
 //--------------------------------------------------------------
+void testApp::gameover(){
+    _logoLoop.stop();
+    _logoLoop.firstFrame();
+}
+
+//--------------------------------------------------------------
+void testApp::tada(){
+    int video = _score/200000.*16;
+    _stairs[video]->start();
+}
+//--------------------------------------------------------------
+void testApp::startPlaying(){
+    _logoLoop.play();
+    _score = 0;
+    _easeScore = 0;
+}
+
+//--------------------------------------------------------------
 void testApp::checkForOscMessages(){
   while (_receiver.hasWaitingMessages()){
     ofxOscMessage m;
@@ -89,16 +99,21 @@ void testApp::checkForOscMessages(){
       cout << "A ball hit stair #" << stair << endl;
       bangStair(stair);
     }
+    else if (m.getAddress() == "/ballroom/start/"){
+      startPlaying();
+    }
+    else if (m.getAddress() == "/ballroom/gameover/"){
+      gameover();
+    }
+    else if (m.getAddress() == "/ballroom/tada/"){
+      tada();
+    }
   }
+
 }
 
 //--------------------------------------------------------------
 void testApp::bangStair(int stair){
-    _stairs[stair]->start();
-
-    _lastBangTime = ofGetElapsedTimeMillis();
-    _logoLoop.stop();
-    _logoLoop.firstFrame();
     _score = _score + _stairs[stair]->_score;
     Tweenzor::add( &_easeScore, _easeScore, _score, 0.f, 2.0f, EASE_IN_QUINT);
 }
